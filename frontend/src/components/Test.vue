@@ -3,21 +3,22 @@
     <v-container> 
       <v-layout row>
         <v-flex ma-1 v-for="item in list" :key="item.id"> 
-          <Container>
+          <Container
+          >
             <Draggable>
               <v-card>
                 <v-card-title>
                   {{item.name}}
                 </v-card-title>
-                <v-card-text v-for="item in items" :key="item.id">
+                <v-card v-for="item in items" :key="item.id">
                   <Container>
                     <Draggable>
-                      <p >
+                      <p>
                         {{item.name}}
                       </p>
                     </Draggable>
                   </Container>
-                </v-card-text>
+                </v-card>
               </v-card>
             </Draggable>
           </Container>

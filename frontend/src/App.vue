@@ -2,8 +2,7 @@
   <v-app dark>
     <v-toolbar app>
       <v-toolbar-title class="headline text-uppercase">
-        <span>Vuetify</span>
-        <span class="font-weight-light">MATERIAL DESIGN</span>
+        <span>vue-trello-clone</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn
@@ -17,7 +16,8 @@
 
     <v-content>
       <!-- <HelloWorld/> -->
-      <Test/>
+      <!-- <Test/> -->
+      <Test2/>
     </v-content>
   </v-app>
 </template>
@@ -25,12 +25,14 @@
 <script>
 import HelloWorld from './components/HelloWorld'
 import Test from './components/Test'
+import Test2 from './components/Test2'
 
 export default {
   name: 'App',
   components: {
     HelloWorld,
-    Test
+    Test,
+    Test2
   },
   data () {
     return {
