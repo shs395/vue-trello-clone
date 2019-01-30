@@ -7,10 +7,10 @@
       <v-spacer></v-spacer>
       <v-btn
         flat
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
+        href="https://github.com/shs395/vue-trello-clone"
         target="_blank"
       >
-        <span class="mr-2">Latest Release</span>
+        <span class="mr-2">GITHUB</span>
       </v-btn>
     </v-toolbar>
 
