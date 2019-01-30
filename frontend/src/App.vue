@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app dark>
     <v-toolbar app>
       <v-toolbar-title class="headline text-uppercase">
         <span>Vuetify</span>
@@ -39,3 +39,6 @@ export default {
   }
 }
 </script>
+<style>
+</style>
+

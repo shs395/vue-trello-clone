@@ -1,29 +1,29 @@
 <template>
   <div>
-    <Container>
-      <Draggable>
-        <v-btn>1</v-btn>
-      </Draggable>
-      <Draggable>
-        <v-btn>2</v-btn>
-      </Draggable>
-      <Draggable>
-        <v-btn>3</v-btn>
-      </Draggable>
-      <v-card>
-        <v-card-title>
-          할일
-        </v-card-title>
-        <v-card-text>
-          <Draggable>
-            <v-card>1</v-card>
-            <v-card>2</v-card>
-            <v-card>3</v-card>
-          </Draggable>
-        </v-card-text>
-      </v-card>
-      
-    </Container>
+    <v-container> 
+      <v-layout row>
+        <v-flex ma-1 v-for="item in list" :key="item.id"> 
+          <Container>
+            <Draggable>
+              <v-card>
+                <v-card-title>
+                  {{item.name}}
+                </v-card-title>
+                <v-card-text v-for="item in items" :key="item.id">
+                  <Container>
+                    <Draggable>
+                      <p >
+                        {{item.name}}
+                      </p>
+                    </Draggable>
+                  </Container>
+                </v-card-text>
+              </v-card>
+            </Draggable>
+          </Container>
+        </v-flex>
+      </v-layout>
+    </v-container>
   </div>
 </template>
 <script>
@@ -37,7 +37,19 @@ export default {
   },
   data:function(){
     return{
-
+      list:[
+        {id:1 , name:"할일"},
+        {id:2 , name:"진행중"},
+        {id:3 , name:"예정"},
+        {id:4 , name:"완료"}
+      ],
+      items:[
+        {id:1, name:"a"},
+        {id:2, name:"b"},
+        {id:3, name:"c"},
+        {id:4, name:"d"},
+        {id:5, name:"e"},
+      ]
     }
   },
   methods:{
