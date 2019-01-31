@@ -19,7 +19,7 @@
             drag-class="card-ghost"
             drop-class="card-ghost-drop"
           >
-            <Draggable v-for="card in cards" :key="card.id">
+            <Draggable v-for="card in item.cards" :key="card.id">
               <v-btn>
                 {{card.name}}
               </v-btn>
@@ -49,20 +49,31 @@ export default {
   data:function(){
     return{
       list:[
-        {id:0 , name:"하고싶은 일"},
-        {id:1 , name:"할일"},
-        {id:2 , name:"진행중"},
-        {id:3 , name:"예정"},
-        {id:4 , name:"완료"}
+        {
+          id:0, 
+          name:"하고싶은 일",
+          cards:[
+            {id:0, name:"test"},
+            {id:1, name:"a"},
+            {id:2, name:"b"},
+            {id:3, name:"c"},
+            {id:4, name:"d"},
+            {id:5, name:"e"},
+          ]
+        },
+        {
+          id:1, 
+          name:"할일",
+          cards:[
+            {id:0, name:"r"},
+            {id:1, name:"asda"},
+            {id:2, name:"qweqwe"},
+            {id:3, name:"vdf"},
+            {id:4, name:"sadg"},
+            {id:5, name:"e"},
+          ]
+        },
       ],
-      cards:[
-        {id:0, name:"test"},
-        {id:1, name:"a"},
-        {id:2, name:"b"},
-        {id:3, name:"c"},
-        {id:4, name:"d"},
-        {id:5, name:"e"},
-      ]
     }
   },
   methods:{
@@ -90,11 +101,11 @@ export default {
     onCardDrop (dropResult) {
       console.log("CardDrop")
       console.log(dropResult)
-      if (dropResult.removedIndex !== null || dropResult.addedIndex !== null) {
-        var cards = this.cards
-        cards = applyDrag(cards, dropResult)
-        this.cards = cards
-      }
+      // if (dropResult.removedIndex !== null || dropResult.addedIndex !== null) {
+      //   var cards = this.list[0].cards
+      //   cards = applyDrag(cards, dropResult)
+      //   this.cards = cards
+      // }
     }
   }
 }
@@ -109,5 +120,4 @@ export default {
       transition: transform 0.18s ease-in-out;
       transform: rotateZ(0deg)
   }
-
 </style>

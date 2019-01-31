@@ -1,7 +1,9 @@
 <template>
-  <v-app dark>
-    <v-toolbar app>
+  <v-app class="green lighten-1">
+    <v-toolbar app color="rgba(92,160,98)">
       <v-toolbar-title class="headline text-uppercase">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAABfAAAAXwBsrqMZwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAADISURBVEiJ7ZJLCsJAEESrm1xDRM/hB117jPlk42VchARyDneK6D3cSLxGu4pobDEZZ6GQWs3UVNdjoIF/F9UHa+2KiDYARl92noloXRTFFgD4TiLKIpQDwFhEsvqSPDwMAICZF3meH5pTxpglM+9aZoa1x82QNggAZVnuu2TeAmKrB/QAXcaYqeZba+dNL9GCn8TMR+dcu2wIoIt6QHeAc26iBb33sxCAtkUnbUNEJKT/6QdVUIOuywtARFIA1wjlFRGlEXp+RDeOHTMUxB8lNQAAAABJRU5ErkJggg==">
+        <img src="https://img.icons8.com/color/24/000000/trello.png">
         <span>vue-trello-clone</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
@@ -17,7 +19,8 @@
     <v-content>
       <!-- <HelloWorld/> -->
       <!-- <Test/> -->
-      <Test2/>
+      <!-- <Test2/> -->
+      <router-view></router-view>
     </v-content>
   </v-app>
 </template>
