@@ -20,7 +20,8 @@
       <!-- <HelloWorld/> -->
       <!-- <Test/> -->
       <!-- <Test2/> -->
-      <router-view></router-view>
+      <!-- <router-view></router-view> -->
+      <Test4/>
     </v-content>
   </v-app>
 </template>
@@ -29,13 +30,15 @@
 import HelloWorld from './components/HelloWorld'
 import Test from './components/Test'
 import Test2 from './components/Test2'
+import Test4 from './components/Test4'
 
 export default {
   name: 'App',
   components: {
     HelloWorld,
     Test,
-    Test2
+    Test2,
+    Test4
   },
   data () {
     return {
