@@ -20,8 +20,8 @@
       <!-- <HelloWorld/> -->
       <!-- <Test/> -->
       <!-- <Test2/> -->
-      <!-- <router-view></router-view> -->
-      <Test4/>
+      <router-view></router-view>
+      <!-- <Test4/> -->
     </v-content>
   </v-app>
 </template>
