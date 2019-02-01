@@ -8,7 +8,7 @@
       drop-class="card-ghost-drop"
       drag-handle-selector=".card-header"
     >
-      <Draggable class="list" v-for="column in scene.children" :key="column.id">
+      <Draggable class="list" v-for="column in lists.children" :key="column.id">
         <div class="card">
           <div class="card-header">
             {{ column.name }}
@@ -84,7 +84,7 @@ import { applyDrag, generateItems } from '../utils/helpers'
 //   return cardColors[rand]
 // }
 
-const scene = {
+const lists = {
   // type: 'container',
   props: {
     // orientation: 'horizontal'
@@ -246,7 +246,7 @@ export default {
 
   data () {
     return {
-      scene,
+      lists,
       footerFlag: true,
       addNewListFlag: true,
       newCardName: '',
@@ -256,28 +256,28 @@ export default {
 
   methods: {
     onColumnDrop (dropResult) {
-      const scene = Object.assign({}, this.scene)
-      scene.children = applyDrag(scene.children, dropResult)
-      this.scene = scene
+      const lists = Object.assign({}, this.lists)
+      lists.children = applyDrag(lists.children, dropResult)
+      this.lists = lists
     },
 
     onCardDrop (columnId, dropResult) {
       if (dropResult.removedIndex !== null || dropResult.addedIndex !== null) {
-        const scene = Object.assign({}, this.scene)
-        const column = scene.children.filter(p => p.id === columnId)[0]
-        const columnIndex = scene.children.indexOf(column)
+        const lists = Object.assign({}, this.lists)
+        const column = lists.children.filter(p => p.id === columnId)[0]
+        const columnIndex = lists.children.indexOf(column)
 
         const newColumn = Object.assign({}, column)
         newColumn.children = applyDrag(newColumn.children, dropResult)
-        scene.children.splice(columnIndex, 1, newColumn)
+        lists.children.splice(columnIndex, 1, newColumn)
 
-        this.scene = scene
+        this.lists = lists
       }
     },
 
     getCardPayload (columnId) {
       return index => {
-        return this.scene.children.filter(p => p.id === columnId)[0].children[index]
+        return this.lists.children.filter(p => p.id === columnId)[0].children[index]
       }
     },
 
@@ -294,8 +294,8 @@ export default {
     },
 
     addNewList () {
-      var length = this.scene.children.length
-      this.scene.children.push(
+      var length = this.lists.children.length
+      this.lists.children.push(
         {
           id:`${length}`,
           type: 'container',
@@ -332,7 +332,7 @@ export default {
     },
 
     addNewCard () {
-      this.scene.children[0].children.push(
+      this.lists.children[0].children.push(
         {
           type: 'draggable',
           id: '41',
