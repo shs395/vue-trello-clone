@@ -23,21 +23,18 @@
             drop-class="card-ghost-drop"
           >
             <Draggable v-for="card in column.children" :key="card.id">
-              <!-- <div :class="card.props.className" :style="card.props.style">
-                <p>{{ card.data }}</p>
-              </div> -->
               <div class="card-content">
                 {{card.data}}
               </div>
             </Draggable>
           </Container>
-          <div @click="footerFlag = !footerFlag" class="card-footer" v-if="footerFlag">
+          <div @click="column.footerFlag = !column.footerFlag" class="card-footer" v-if="column.footerFlag">
             + Add another card
           </div>
-          <div v-if="!footerFlag">
-            <textarea class="card-content new-card-textarea" v-model="newCardName" placeholder="Enter a title for this card..."></textarea>
-            <button class="addCardBtn" @click="addNewCard">Add Card</button>
-            <button @click="footerFlag = !footerFlag" >X</button>
+          <div v-if="!column.footerFlag">
+            <textarea class="card-content new-card-textarea" v-model="column.newCardName" placeholder="Enter a title for this card..."></textarea>
+            <button class="addCardBtn" @click="addNewCard(column.id, column.newCardName)">Add Card</button>
+            <button @click="column.footerFlag = !column.footerFlag" >X</button>
             <button>dd</button>
           </div>
         </div>
@@ -61,183 +58,7 @@
 <script>
 import { Container, Draggable } from 'vue-smooth-dnd'
 import { applyDrag, generateItems } from '../utils/helpers'
-
-// const lorem = `Lorem`
-
-// const columnNames = ['Lorem', 'Ipsum', 'Consectetur', 'Eiusmod']
-
-// const cardColors = [
-//   'azure',
-//   'beige',
-//   'bisque',
-//   'blanchedalmond',
-//   'burlywood',
-//   'cornsilk',
-//   'gainsboro',
-//   'ghostwhite',
-//   'ivory',
-//   'khaki'
-// ]
-
-// const pickColor = () => {
-//   const rand = Math.floor(Math.random() * 10)
-//   return cardColors[rand]
-// }
-
-const lists = {
-  // type: 'container',
-  props: {
-    // orientation: 'horizontal'
-  },
-  // children: generateItems(4, i => ({
-  //   id: `column${i}`,
-  //   type: 'container',
-  //   name: columnNames[i],
-  //   props: {
-  //     orientation: 'vertical',
-  //     className: 'card-container'
-  //   },
-  //   children: generateItems(+(Math.random() * 10).toFixed() + 5, j => ({
-  //     type: 'draggable',
-  //     id: `${i}${j}`,
-  //     props: {
-  //       className: 'card',
-  //       style: {backgroundColor: pickColor()}
-  //     },
-  //     data: lorem.slice(0, Math.floor(Math.random() * 150) + 30)
-  //   }))
-  // })),
-  children:[
-    //첫 번째 리스트
-    {
-      id:'0',
-      type: 'container',
-      name: '할일',
-      props: {
-        orientation: 'vertical',
-        className: 'card-container'
-      },
-      children:[
-        //첫 번째 카드
-        {
-          type: 'draggable',
-          id: '00',
-          props: {
-            className: 'card',
-            style: {backgroundColor: 'black'}
-          },
-          data: 'testA'
-        },
-         //두 번째 카드
-        {
-          type: 'draggable',
-          id: '01',
-          props: {
-            className: 'card',
-            style: {backgroundColor: 'red'}
-          },
-          data: 'testB'
-        }
-      ]
-    },
-    //두 번째 리스트
-     {
-      id:'1',
-      type: 'container',
-      name: '완료',
-      props: {
-        orientation: 'vertical',
-        className: 'card-container'
-      },
-      children:[
-        //첫 번째 카드
-        {
-          type: 'draggable',
-          id: '10',
-          props: {
-            className: 'card',
-            style: {backgroundColor: 'black'}
-          },
-          data: 'testC'
-        },
-         //두 번째 카드
-        {
-          type: 'draggable',
-          id: '11',
-          props: {
-            className: 'card',
-            style: {backgroundColor: 'red'}
-          },
-          data: 'testD'
-        }
-      ]
-    },
-    //세 번째 리스트
-    {
-      id:'2',
-      type: 'container',
-      name: '테스트',
-      props: {
-        orientation: 'vertical',
-        className: 'card-container'
-      },
-      children:[
-        //첫 번째 카드
-        {
-          type: 'draggable',
-          id: '20',
-          props: {
-            className: 'card',
-            style: {backgroundColor: 'black'}
-          },
-          data: 'testE'
-        },
-         //두 번째 카드
-        {
-          // type: 'draggable',
-          id: '21',
-          props: {
-            className: 'card',
-            style: {backgroundColor: 'red'}
-          },
-          data: 'testF'
-        }
-      ]
-    },
-    // {
-    //   //마지막 리스트
-    //   id:'3',
-    //   type: 'container',
-    //   name: '+Add another list',
-    //   props: {
-    //     orientation: 'vertical',
-    //     className: 'card-container'
-    //   },
-    //   children:[
-    //     // //첫 번째 카드
-    //     // {
-    //     //   type: 'draggable',
-    //     //   id: '20',
-    //     //   props: {
-    //     //     className: 'card',
-    //     //     style: {backgroundColor: 'black'}
-    //     //   },
-    //     //   data: 'testE'
-    //     // },
-    //     //  //두 번째 카드
-    //     // {
-    //     //   // type: 'draggable',
-    //     //   id: '21',
-    //     //   props: {
-    //     //     className: 'card',
-    //     //     style: {backgroundColor: 'red'}
-    //     //   },
-    //     //   data: 'testF'
-    //     // }
-    //   ]
-    // }
-  ]
-}
+import lists from '../assets/lists.js'
 
 export default {
   name: 'Test3',
@@ -247,7 +68,6 @@ export default {
   data () {
     return {
       lists,
-      footerFlag: true,
       addNewListFlag: true,
       newCardName: '',
       newListName: '',
@@ -289,11 +109,9 @@ export default {
       console.log(...params)
     },
 
-    test () {
-      alert("hi")
-    },
-
     addNewList () {
+      if(this.newListName === '')
+        return
       var length = this.lists.children.length
       this.lists.children.push(
         {
@@ -304,46 +122,32 @@ export default {
             orientation: 'vertical',
             className: 'card-container'
           },
+          footerFlag: true,
           children:[
-            //첫 번째 카드
-            {
-              type: 'draggable',
-              id: `${length}0`,
-              props: {
-                className: 'card',
-                style: {backgroundColor: 'black'}
-              },
-              data: 'testG'
-            },
-            //두 번째 카드
-            {
-              // type: 'draggable',
-              id: `${length}1`,
-              props: {
-                className: 'card',
-                style: {backgroundColor: 'red'}
-              },
-              data: 'testH'
-            }
           ]
         },
       )
       this.newListName = ''
+      this.addNewListFlag = !this.addNewListFlag
     },
 
-    addNewCard () {
-      this.lists.children[0].children.push(
+    addNewCard (index, newCardName) {
+      if(newCardName === '')
+        return
+      var cardCount = this.lists.children[index].children.length
+      this.lists.children[index].children.push(
         {
           type: 'draggable',
-          id: '41',
+          id: `${index}${cardCount}`,
           props: {
             className: 'card',
             style: {backgroundColor: 'red'}
           },
-          data: this.newCardName
+          data: newCardName
         }
       )
-      this.newCardName = ''
+      this.lists.children[index].newCardName = ''
+      this.lists.children[index].footerFlag = !this.lists.children[index].footerFlag
     },
   }
 }
