@@ -1,0 +1,94 @@
+/* html,body{
+  background: rgba(75, 191, 107);
+  margin: 0;
+}
+.list{
+  width: 18%;
+}
+.card{
+  background-color: rgba(224,227,230);
+  margin: 7% 0 0 7%;
+  border-radius: 3px;
+}
+.card-header{
+  margin: 0px 6px 0px 6px;
+  color: rgba(31,57,75);
+  font-weight: bold;
+}
+.card-content{
+  background-color: rgba(255,255,255);
+  margin: 0px 6px 6px 6px;
+  color: rgba(31,57,75);
+  border-radius: 3px;
+}
+.card-footer{
+  margin: 0px 6px 0px 6px;
+  color: rgba(125,141,152);
+}
+.card-ghost {
+    transition: transform 0.18s ease;
+    transform: rotateZ(5deg)
+}
+.card-ghost-drop {
+    transition: transform 0.18s ease-in-out;
+    transform: rotateZ(0deg)
+}
+#add-list{
+  background-color: rgba(95,166,101);
+  color: rgba(223,237,224);
+  margin: 7% 0 0 7%;
+  border-radius: 3px;
+} */
+
+html,body{
+  background-color: rgba(75, 191, 107);
+  margin: 0;
+}
+.list{
+  width: 18%;
+}
+.card{
+  background-color: rgba(224,227,230);
+  margin: 7% 0 0 7%;
+  border-radius: 3px;
+}
+.card-header{
+  margin: 0px 6px 0px 6px;
+  color: rgba(31,57,75);
+  font-weight: bold;
+}
+.card-content{
+  background-color: rgba(255,255,255);
+  margin: 0px 6px 6px 6px;
+  color: rgba(31,57,75);
+  border-radius: 3px;
+}
+.card-footer{
+  margin: 0px 6px 0px 6px;
+  color: rgba(125,141,152);
+}
+.card-ghost {
+    transition: transform 0.18s ease;
+    transform: rotateZ(5deg)
+}
+.card-ghost-drop {
+    transition: transform 0.18s ease-in-out;
+    transform: rotateZ(0deg)
+}
+#add-list{
+  background-color: rgba(95,166,101);
+  color: rgba(223,237,224);
+  margin: 7% 0 0 7%;
+  border-radius: 3px;
+}
+.new-card-textarea{
+  border: 0px;
+  width: 93%;
+  height:45px;
+}
+.addCardBtn{
+  background-color: #5aac44;
+  box-shadow: 0 1px 0 0 #3f6f21;
+  border: none;
+  color: #fff;
+}

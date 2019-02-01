@@ -6,7 +6,7 @@
       @drag-start="dragStart"
       drag-class="card-ghost"
       drop-class="card-ghost-drop"
-      non-drag-area-selector="#add-list"
+      drag-handle-selector=".card-header"
     >
       <Draggable class="list" v-for="column in scene.children" :key="column.id">
         <div class="card">
@@ -35,17 +35,24 @@
             + Add another card
           </div>
           <div v-if="!footerFlag">
-            <textarea>Enter a title for this card...</textarea>
-            <button>Add Card</button>
+            <textarea class="card-content new-card-textarea" v-model="newCardName" placeholder="Enter a title for this card..."></textarea>
+            <button class="addCardBtn" @click="addNewCard">Add Card</button>
             <button @click="footerFlag = !footerFlag" >X</button>
             <button>dd</button>
           </div>
         </div>
       </Draggable>
       <Draggable class="list">
-        <div @click="addNewList" id="add-list">
-          +Add another list
-        </div>
+
+         <div @click="addNewListFlag = !addNewListFlag" id="add-list" v-if="addNewListFlag">
+            + Add another list
+          </div>
+          <div v-if="!addNewListFlag">
+            <textarea class="" v-model="newListName" placeholder="Enter list title..."></textarea>
+            <button class="addCardBtn" @click="addNewList">Add List</button>
+            <button @click="addNewListFlag = !addNewListFlag" >X</button>
+            <button>dd</button>
+          </div>
       </Draggable>
     </Container>
   </div>
@@ -240,7 +247,10 @@ export default {
   data () {
     return {
       scene,
-      footerFlag: true
+      footerFlag: true,
+      addNewListFlag: true,
+      newCardName: '',
+      newListName: '',
     }
   },
 
@@ -283,50 +293,61 @@ export default {
       alert("hi")
     },
 
-    addNewList() {
-      alert("hi")
-    }
+    addNewList () {
+      var length = this.scene.children.length
+      this.scene.children.push(
+        {
+          id:`${length}`,
+          type: 'container',
+          name: this.newListName,
+          props: {
+            orientation: 'vertical',
+            className: 'card-container'
+          },
+          children:[
+            //첫 번째 카드
+            {
+              type: 'draggable',
+              id: `${length}0`,
+              props: {
+                className: 'card',
+                style: {backgroundColor: 'black'}
+              },
+              data: 'testG'
+            },
+            //두 번째 카드
+            {
+              // type: 'draggable',
+              id: `${length}1`,
+              props: {
+                className: 'card',
+                style: {backgroundColor: 'red'}
+              },
+              data: 'testH'
+            }
+          ]
+        },
+      )
+      this.newListName = ''
+    },
+
+    addNewCard () {
+      this.scene.children[0].children.push(
+        {
+          type: 'draggable',
+          id: '41',
+          props: {
+            className: 'card',
+            style: {backgroundColor: 'red'}
+          },
+          data: this.newCardName
+        }
+      )
+      this.newCardName = ''
+    },
   }
 }
 </script>
-<style scoped>
-.list{
-  width: 18%;
-}
-.card{
-  background-color: rgba(224,227,230);
-  margin: 7% 0 0 7%;
-  border-radius: 3px;
-}
-.card-header{
-  margin: 0px 6px 0px 6px;
-  color: rgba(31,57,75);
-  font-weight: bold;
-}
-.card-content{
-  background-color: rgba(255,255,255);
-  margin: 0px 6px 6px 6px;
-  color: rgba(31,57,75);
-  border-radius: 3px;
-}
-.card-footer{
-  margin: 0px 6px 0px 6px;
-  color: rgba(125,141,152);
-}
-.card-ghost {
-    transition: transform 0.18s ease;
-    transform: rotateZ(5deg)
-}
-.card-ghost-drop {
-    transition: transform 0.18s ease-in-out;
-    transform: rotateZ(0deg)
-}
-#add-list{
-  background-color: rgba(95,166,101);
-  color: rgba(223,237,224);
-  margin: 7% 0 0 7%;
-  border-radius: 3px;
-}
-
+<style>
 
 </style>
