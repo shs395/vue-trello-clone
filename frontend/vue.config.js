@@ -1,1 +1,0 @@
-module.exports = { baseUrl: '/vue-trello-clone/' }
