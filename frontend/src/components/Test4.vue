@@ -28,12 +28,17 @@
               </div>
             </Draggable>
           </Container>
+          <Draggable>
+            <p>
+              dd
+            </p>
+          </Draggable>
           <div @click="column.footerFlag = !column.footerFlag" class="card-footer" v-if="column.footerFlag">
             + Add another card
           </div>
           <div v-if="!column.footerFlag">
             <textarea class="card-content new-card-textarea" v-model="column.newCardName" placeholder="Enter a title for this card..."></textarea>
-            <button class="addCardBtn" @click="addNewCard(column.id, column.newCardName)">Add Card</button>
+            <button class="add-card-btn" @click="addNewCard(column.id, column.newCardName)">Add Card</button>
             <button @click="column.footerFlag = !column.footerFlag" >X</button>
             <button>dd</button>
           </div>
