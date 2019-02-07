@@ -56,12 +56,17 @@ html,body{
   margin: 0px 6px 0px 6px;
   color: rgba(31,57,75);
   font-weight: bold;
+  background: transparent;
+  border: 1px solid transparent;
 }
 .card-content{
   background-color: rgba(255,255,255);
   margin: 0px 6px 6px 6px;
   color: rgba(31,57,75);
   border-radius: 3px;
+}
+.card-content:hover{
+  background-color: rgba(245,246,247)
 }
 .card-footer{
   margin: 0px 6px 0px 6px;
@@ -86,7 +91,7 @@ html,body{
   width: 93%;
   height:45px;
 }
-.addCardBtn{
+.add-card-btn{
   background-color: #5aac44;
   box-shadow: 0 1px 0 0 #3f6f21;
   border: none;

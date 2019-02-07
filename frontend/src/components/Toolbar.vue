@@ -1,12 +1,12 @@
 <template>
   <div class="toolbar">
-      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAABfAAAAXwBsrqMZwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAADISURBVEiJ7ZJLCsJAEESrm1xDRM/hB117jPlk42VchARyDneK6D3cSLxGu4pobDEZZ6GQWs3UVNdjoIF/F9UHa+2KiDYARl92noloXRTFFgD4TiLKIpQDwFhEsvqSPDwMAICZF3meH5pTxpglM+9aZoa1x82QNggAZVnuu2TeAmKrB/QAXcaYqeZba+dNL9GCn8TMR+dcu2wIoIt6QHeAc26iBb33sxCAtkUnbUNEJKT/6QdVUIOuywtARFIA1wjlFRGlEXp+RDeOHTMUxB8lNQAAAABJRU5ErkJggg==">
-        <img src="https://img.icons8.com/color/24/000000/trello.png">
-        <span>vue-trello-clone</span>
+    <link href="https://fonts.googleapis.com/css?family=Staatliches" rel="stylesheet">
+    <img id="trello-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAABfAAAAXwBsrqMZwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAADZSURBVEiJ7ZJNDgFBEIW/7riGCEcY7PyEDSOOwNjauIyFtWTugA0RtuIINsI1ykJGZKaEmbEgmbfqrn71vuqk4N9lgoPT8/oWpgjFdJFyQpgcVv4CwAZlK8zShwOYEsbMglvu6SV/H8C2Dqv5NtzmuMO2xaw/9BQeg4dNWiPAcelv4nheAr6tDJABdDmdQV2rV91hM1zLacZ3stbuKq4XqYvmTQKINUwGiA0od72aZqz2Ro0kgMgWGcNe3RDRduS9Hj8QuCRK0HWOAgxj4Jo2WeCCyDhtzu/oBpvAOWuCSh2OAAAAAElFTkSuQmCC">
+      <span id="toolbar-title">vue-trello-clone</span>
     
-      <button>
-         <span class="mr-2">GITHUB</span>
-      </button>
+      <a href="https://github.com/shs395/vue-trello-clone" target="_blank" id="toolbar-github-btn">
+         <span>GITHUB</span>
+      </a>
   </div>
 </template>
 <script>

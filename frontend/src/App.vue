@@ -6,19 +6,13 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
-import Test from './components/Test'
-import Test2 from './components/Test2'
-import Test4 from './components/Test4'
+import Board from './components/Board'
 import Toolbar from './components/Toolbar'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
-    Test,
-    Test2,
-    Test4,
+    Board,
     Toolbar
   },
   data () {
