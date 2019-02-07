@@ -1,8 +1,8 @@
 <template>
   <div>
       <Toolbar/>
-      <!-- <router-view></router-view> -->
-      <Test4></Test4>
+      <router-view></router-view>
+      <!-- <Test4></Test4> -->
   </div>
 </template>
 

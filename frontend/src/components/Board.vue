@@ -26,11 +26,6 @@
               </div>
             </Draggable>
           </Container>
-          <Draggable>
-            <p>
-              dd
-            </p>
-          </Draggable>
           <div @click="column.footerFlag = !column.footerFlag" class="card-footer" v-if="column.footerFlag">
             + Add another card
           </div>
