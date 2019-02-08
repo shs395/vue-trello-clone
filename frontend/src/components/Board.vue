@@ -142,7 +142,6 @@ export default {
     addNewCard (index, newCardName) {
       if(newCardName === '')
         return
-      alert(index)
       var cardCount = this.lists.children[index].children.length
       this.lists.children[index].children.push(
         {
