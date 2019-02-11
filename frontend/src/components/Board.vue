@@ -168,7 +168,9 @@ export default {
         cardName: `${cardName}`,
         listName: `${listName}`
       }, {
-        draggable: true
+        draggable: true,
+        height: "auto",
+        scrollable: true
       })
     },
 

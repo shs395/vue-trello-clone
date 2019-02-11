@@ -45,12 +45,13 @@ html,body{
   margin: 0;
 }
 .list{
-  width: 18%;
+  width: 272px;
 }
 .card{
   background-color: rgba(224,227,230);
   margin: 7% 0 0 7%;
   border-radius: 3px;
+  width:272px;
 }
 .card-header{
   margin: 0px 6px 0px 6px;
@@ -69,8 +70,13 @@ html,body{
   background-color: rgba(245,246,247)
 }
 .card-footer{
-  margin: 0px 6px 0px 6px;
+  padding: 0px 6px 0px 6px;
   color: rgba(125,141,152);
+}
+.card-footer:hover{
+  background-color: rgba(197,204,208);
+  color: rgba(31,56,75);
+  text-decoration: underline;
 }
 .card-ghost {
     transition: transform 0.18s ease;
@@ -85,6 +91,9 @@ html,body{
   color: rgba(223,237,224);
   margin: 7% 0 0 7%;
   border-radius: 3px;
+}
+#add-list:hover{
+  background-color: rgba(82,142,88);
 }
 .new-card-textarea{
   border: 0px;
