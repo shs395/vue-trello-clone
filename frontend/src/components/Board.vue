@@ -8,9 +8,12 @@
       drop-class="card-ghost-drop"
       drag-handle-selector=".card-header"
     >
+      <!-- <p>{{lists.children}}</p> -->
       <Draggable class="list" v-for="column in lists.children" :key="column.id">
         <div class="card">
           <textarea class="card-header" v-model="column.name"></textarea>
+          <!-- <p>id : {{column.id}}</p>
+          <p>footerFlag : {{column.footerFlag}}</p> -->
           <Container
             group-name="col"
             @drop="(e) => onCardDrop(column.id, e)"
@@ -142,6 +145,12 @@ export default {
     addNewCard (index, newCardName) {
       if(newCardName === '')
         return
+      console.log(index)
+      console.log(typeof(index))
+      var index = this.lists.children.findIndex(function(element){
+        return element.id == index
+      })
+      console.log(index)
       var cardCount = this.lists.children[index].children.length
       this.lists.children[index].children.push(
         {
