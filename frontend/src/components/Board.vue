@@ -8,12 +8,9 @@
       drop-class="card-ghost-drop"
       drag-handle-selector=".card-header"
     >
-      <!-- <p>{{lists.children}}</p> -->
       <Draggable class="list" v-for="column in lists.children" :key="column.id">
         <div class="card">
           <textarea class="card-header" v-model="column.name"></textarea>
-          <!-- <p>id : {{column.id}}</p>
-          <p>footerFlag : {{column.footerFlag}}</p> -->
           <Container
             group-name="col"
             @drop="(e) => onCardDrop(column.id, e)"
@@ -93,6 +90,8 @@ export default {
     },
 
     onCardDrop (columnId, dropResult) {
+      console.log("dropResult ")
+      console.log(dropResult)
       if (dropResult.removedIndex !== null || dropResult.addedIndex !== null) {
         const lists = Object.assign({}, this.lists)
         const column = lists.children.filter(p => p.id === columnId)[0]
@@ -108,6 +107,7 @@ export default {
 
     getCardPayload (columnId) {
       return index => {
+        console.log("getCardPayload index :" + index)
         return this.lists.children.filter(p => p.id === columnId)[0].children[index]
       }
     },
@@ -145,17 +145,13 @@ export default {
     addNewCard (index, newCardName) {
       if(newCardName === '')
         return
-      console.log(index)
-      console.log(typeof(index))
-      var index = this.lists.children.findIndex(function(element){
+      var currentIndex = this.lists.children.findIndex(function(element){
         return element.id == index
       })
-      console.log(index)
-      var cardCount = this.lists.children[index].children.length
-      this.lists.children[index].children.push(
+      this.lists.children[currentIndex].children.push(
         {
           type: 'draggable',
-          id: `${index}${cardCount}`,
+          id: this.lists.cardNumber += 1,
           props: {
             className: 'card',
             style: {backgroundColor: 'red'}
@@ -163,8 +159,8 @@ export default {
           data: newCardName
         }
       )
-      this.lists.children[index].newCardName = ''
-      this.lists.children[index].footerFlag = !this.lists.children[index].footerFlag
+      this.lists.children[currentIndex].newCardName = ''
+      this.lists.children[currentIndex].footerFlag = !this.lists.children[currentIndex].footerFlag
     },
 
     showCardContentModal (cardName, listName) {
@@ -174,7 +170,8 @@ export default {
       }, {
         draggable: true
       })
-    }
+    },
+
   }
 }
 </script>

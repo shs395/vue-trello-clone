@@ -37,7 +37,7 @@ const lists = {
         //첫 번째 카드
         {
           type: 'draggable',
-          id: '00',
+          id: 0,
           props: {
             className: 'card',
             style: {backgroundColor: 'black'}
@@ -47,7 +47,7 @@ const lists = {
          //두 번째 카드
         {
           type: 'draggable',
-          id: '01',
+          id: 1,
           props: {
             className: 'card',
             style: {backgroundColor: 'red'}
@@ -56,7 +56,8 @@ const lists = {
         }
       ]
     },
-  ]
+  ],
+  cardNumber:1,
 }
 
 module.exports = lists
