@@ -23,7 +23,7 @@ export default {
 <style>
 html,body{
   margin: 0;
-  overflow: hidden;
+  overflow-y: hidden;
   height: 100%;
   width: 100%;
 }
