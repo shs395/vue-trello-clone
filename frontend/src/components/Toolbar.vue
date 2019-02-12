@@ -16,11 +16,4 @@ export default {
 }
 </script>
 <style>
-.toolbar{
-  background-color: rgba(0,0,0,0.15);
-  height: 32px;
-  padding: 4px;
-  position: relative;
-  text-align: center;
-}
 </style>

@@ -1,70 +1,45 @@
-/* html,body{
-  background: rgba(75, 191, 107);
-  margin: 0;
-}
-.list{
-  width: 18%;
-}
-.card{
-  background-color: rgba(224,227,230);
-  margin: 7% 0 0 7%;
-  border-radius: 3px;
-}
-.card-header{
-  margin: 0px 6px 0px 6px;
-  color: rgba(31,57,75);
-  font-weight: bold;
-}
-.card-content{
-  background-color: rgba(255,255,255);
-  margin: 0px 6px 6px 6px;
-  color: rgba(31,57,75);
-  border-radius: 3px;
-}
-.card-footer{
-  margin: 0px 6px 0px 6px;
-  color: rgba(125,141,152);
-}
-.card-ghost {
-    transition: transform 0.18s ease;
-    transform: rotateZ(5deg)
-}
-.card-ghost-drop {
-    transition: transform 0.18s ease-in-out;
-    transform: rotateZ(0deg)
-}
-#add-list{
-  background-color: rgba(95,166,101);
-  color: rgba(223,237,224);
-  margin: 7% 0 0 7%;
-  border-radius: 3px;
-} */
-
 html,body{
   background-color: rgba(75, 191, 107);
   margin: 0;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  overflow: hidden;
 }
 .list{
-  width: 272px;
 }
 .card{
   background-color: rgba(224,227,230);
-  margin: 7% 0 0 7%;
   border-radius: 3px;
-  width:272px;
+  width: 272px;
+  margin: 10px 4px;
 }
 .card-header{
+  height: 40px;
+}
+.card-header-name{
   margin: 0px 6px 0px 6px;
   color: rgba(31,57,75);
   font-weight: bold;
   background: transparent;
   border: 1px solid transparent;
+  width: 212px;
+  line-height: 20px;
+  resize: none;
+}
+.card-header-icon{
+  display:inline-block;
 }
 .card-content{
   background-color: rgba(255,255,255);
   margin: 0px 6px 6px 6px;
+  padding: 6px 8px 2px;
   color: rgba(31,57,75);
   border-radius: 3px;
+  cursor: pointer;
+  max-width: 300px;
+  min-height: 20px;
+  display: block;
 }
 .card-content:hover{
   background-color: rgba(245,246,247)
@@ -86,14 +61,21 @@ html,body{
     transition: transform 0.18s ease-in-out;
     transform: rotateZ(0deg)
 }
-#add-list{
+#add-list-btn{
   background-color: rgba(95,166,101);
   color: rgba(223,237,224);
-  margin: 7% 0 0 7%;
   border-radius: 3px;
+  width: 272px;
+  margin: 10px 4px;
 }
-#add-list:hover{
+#add-list-btn:hover{
   background-color: rgba(82,142,88);
+}
+#add-list{
+  background-color: rgba(224,227,230);
+  border-radius: 3px;
+  width: 272px;
+  margin: 10px 4px;
 }
 .new-card-textarea{
   border: 0px;

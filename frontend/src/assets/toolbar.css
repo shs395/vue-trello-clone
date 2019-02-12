@@ -1,3 +1,10 @@
+.toolbar{
+  background-color: rgba(0,0,0,0.15);
+  height: 32px;
+  padding: 4px;
+  position: relative;
+  text-align: center;
+}
 #trello-img{
   display: inline-block;
   height: 100%;

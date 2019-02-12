@@ -10,7 +10,12 @@
     >
       <Draggable class="list" v-for="column in lists.children" :key="column.id">
         <div class="card">
-          <textarea class="card-header" v-model="column.name"></textarea>
+          <div class="card-header">
+            <textarea class="card-header-name" v-model="column.name"></textarea>
+            <div class="card-header-icon">
+              <i class="fas fa-ellipsis-h"></i>
+            </div>
+          </div>
           <Container
             group-name="col"
             @drop="(e) => onCardDrop(column.id, e)"
@@ -39,10 +44,10 @@
       </Draggable>
       <Draggable class="list">
 
-         <div @click="addNewListFlag = !addNewListFlag" id="add-list" v-if="addNewListFlag">
+         <div @click="addNewListFlag = !addNewListFlag" id="add-list-btn" v-if="addNewListFlag">
             + Add another list
           </div>
-          <div v-if="!addNewListFlag">
+          <div v-if="!addNewListFlag" id="add-list">
             <textarea class="" v-model="newListName" placeholder="Enter list title..."></textarea>
             <button class="add-card-btn" @click="addNewList">Add List</button>
             <button @click="addNewListFlag = !addNewListFlag" >X</button>
@@ -168,7 +173,7 @@ export default {
         cardName: `${cardName}`,
         listName: `${listName}`
       }, {
-        draggable: true,
+        // draggable: true,
         height: "auto",
         scrollable: true
       })

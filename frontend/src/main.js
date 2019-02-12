@@ -8,6 +8,7 @@ import VModal from 'vue-js-modal'
 import './assets/board.css'
 import './assets/toolbar.css'
 
+
 Vue.use(VModal, { dynamic: true })
 
 Vue.config.productionTip = false
