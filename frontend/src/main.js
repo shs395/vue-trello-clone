@@ -4,12 +4,14 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import VModal from 'vue-js-modal'
+import Popover  from 'vue-js-popover'
 
 import './assets/board.css'
 import './assets/toolbar.css'
 
 
 Vue.use(VModal, { dynamic: true })
+Vue.use(Popover)
 
 Vue.config.productionTip = false
 

@@ -16,7 +16,7 @@
           <div class="card">
             <div class="card-header">
               <textarea class="card-header-name" v-model="column.name"></textarea>
-              <div class="card-header-icon">
+              <div class="card-header-icon" v-popover="{ name: 'cardHeaderPopover' }" @click="()=>{currentColumn = column.id;popOverFlag = false}">
                 <i class="fas fa-ellipsis-h"></i>
               </div>
             </div>
@@ -61,6 +61,28 @@
       </Container>
 
       <modals-container/>
+      <popover name="cardHeaderPopover" v-if="!popOverFlag">
+        {{currentColumn}}
+        <div class="card-header-popover-header">
+          <h3>List Actions</h3>
+        </div>
+        <div class="card-header-popover-content">
+          <ul>
+            <li><a @click="openAddNewCard(currentColumn)">Add Card...</a></li>
+            <li><a href="#">Copy List...</a></li>
+            <li><a href="#"> Move List...</a></li>
+            <li><a href="#">Watch</a></li>
+          </ul>
+          <ul>
+            <li><a href="#">Move All Cards in This List...</a></li>
+            <li><a href="#">Archive All Cards in This List...</a></li>
+          </ul>
+          <ul>
+            <li><a href="#">Archive This List</a></li>
+          </ul>
+        </div>
+        
+      </popover>
     </div>
   
   </div>
@@ -80,7 +102,7 @@ export default {
     Container, 
     Draggable,
     CardContentModal,
-    Toolbar
+    Toolbar,
   },
 
   data () {
@@ -89,7 +111,8 @@ export default {
       addNewListFlag: true,
       newCardName: '',
       newListName: '',
-
+      currentColumn: '',
+      popOverFlag: false,
     }
   },
 
@@ -184,6 +207,11 @@ export default {
         scrollable: true
       })
     },
+
+    openAddNewCard (index) {
+      this.popOverFlag = true;
+      lists.children[index].footerFlag = !lists.children[index].footerFlag
+    }
 
   }
 }
