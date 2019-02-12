@@ -1,71 +1,76 @@
 <template>
-  <div>
-    <Container
-      orientation="horizontal"
-      @drop="onColumnDrop($event)"
-      @drag-start="dragStart"
-      drag-class="card-ghost"
-      drop-class="card-ghost-drop"
-      drag-handle-selector=".card-header"
-    >
-      <Draggable class="list" v-for="column in lists.children" :key="column.id">
-        <div class="card">
-          <div class="card-header">
-            <textarea class="card-header-name" v-model="column.name"></textarea>
-            <div class="card-header-icon">
-              <i class="fas fa-ellipsis-h"></i>
+  <div class="main">
+    <div class="main">
+
+      <Toolbar/>
+
+      <Container
+        orientation="horizontal"
+        @drop="onColumnDrop($event)"
+        @drag-start="dragStart"
+        drag-class="card-ghost"
+        drop-class="card-ghost-drop"
+        drag-handle-selector=".card-header"
+      >
+        <Draggable class="list" v-for="column in lists.children" :key="column.id">
+          <div class="card">
+            <div class="card-header">
+              <textarea class="card-header-name" v-model="column.name"></textarea>
+              <div class="card-header-icon">
+                <i class="fas fa-ellipsis-h"></i>
+              </div>
+            </div>
+            <Container
+              group-name="col"
+              @drop="(e) => onCardDrop(column.id, e)"
+              @drag-start="(e) => log('drag start', e)"
+              @drag-end="(e) => log('drag end', e)"
+              :get-child-payload="getCardPayload(column.id)"
+              drag-class="card-ghost"
+              drop-class="card-ghost-drop"
+            >
+              <Draggable v-for="card in column.children" :key="card.id">
+                <div class="card-content" @click="showCardContentModal(card.data, column.name)">
+                  {{card.data}}
+                </div>
+              </Draggable>
+            </Container>
+            <div @click="column.footerFlag = !column.footerFlag" class="card-footer" v-if="column.footerFlag">
+              + Add another card
+            </div>
+            <div v-if="!column.footerFlag">
+              <textarea class="card-content new-card-textarea" v-model="column.newCardName" placeholder="Enter a title for this card..."></textarea>
+              <button class="add-card-btn" @click="addNewCard(column.id, column.newCardName)">Add Card</button>
+              <button @click="column.footerFlag = !column.footerFlag" >X</button>
+              <button>dd</button>
             </div>
           </div>
-          <Container
-            group-name="col"
-            @drop="(e) => onCardDrop(column.id, e)"
-            @drag-start="(e) => log('drag start', e)"
-            @drag-end="(e) => log('drag end', e)"
-            :get-child-payload="getCardPayload(column.id)"
-            drag-class="card-ghost"
-            drop-class="card-ghost-drop"
-          >
-            <Draggable v-for="card in column.children" :key="card.id">
-              <div class="card-content" @click="showCardContentModal(card.data, column.name)">
-                {{card.data}}
-              </div>
-            </Draggable>
-          </Container>
-          <div @click="column.footerFlag = !column.footerFlag" class="card-footer" v-if="column.footerFlag">
-            + Add another card
-          </div>
-          <div v-if="!column.footerFlag">
-            <textarea class="card-content new-card-textarea" v-model="column.newCardName" placeholder="Enter a title for this card..."></textarea>
-            <button class="add-card-btn" @click="addNewCard(column.id, column.newCardName)">Add Card</button>
-            <button @click="column.footerFlag = !column.footerFlag" >X</button>
-            <button>dd</button>
-          </div>
-        </div>
-      </Draggable>
-      <Draggable class="list">
+        </Draggable>
+        <Draggable class="list">
 
-         <div @click="addNewListFlag = !addNewListFlag" id="add-list-btn" v-if="addNewListFlag">
-            + Add another list
-          </div>
-          <div v-if="!addNewListFlag" id="add-list">
-            <textarea class="" v-model="newListName" placeholder="Enter list title..."></textarea>
-            <button class="add-card-btn" @click="addNewList">Add List</button>
-            <button @click="addNewListFlag = !addNewListFlag" >X</button>
-            <button>dd</button>
-          </div>
-      </Draggable>
-    </Container>
+          <div @click="addNewListFlag = !addNewListFlag" id="add-list-btn" v-if="addNewListFlag">
+              + Add another list
+            </div>
+            <div v-if="!addNewListFlag" id="add-list">
+              <textarea class="" v-model="newListName" placeholder="Enter list title..."></textarea>
+              <button class="add-card-btn" @click="addNewList">Add List</button>
+              <button @click="addNewListFlag = !addNewListFlag" >X</button>
+              <button>dd</button>
+            </div>
+        </Draggable>
+      </Container>
 
-    <modals-container/>
-
-
+      <modals-container/>
+    </div>
+  
   </div>
 </template>
 
 <script>
 import { Container, Draggable } from 'vue-smooth-dnd'
 import { applyDrag, generateItems } from '../utils/helpers'
-import CardContentModal from './CardContentModal.vue'
+import Toolbar from '../components/Toolbar'
+import CardContentModal from '../components/CardContentModal.vue'
 import lists from '../assets/lists.js'
 
 export default {
@@ -74,7 +79,8 @@ export default {
   components: {
     Container, 
     Draggable,
-    CardContentModal
+    CardContentModal,
+    Toolbar
   },
 
   data () {
